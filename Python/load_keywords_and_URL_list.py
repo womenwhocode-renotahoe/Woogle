@@ -4,10 +4,16 @@ input:          filename
 output:         data structures containing URL list and search keywords list
 '''
 
+
 def loadSourceList(filename):
 	textFile = open(filename, 'r')
 	textString = textFile.read()
 	sourceList = textString.split('\n')
-	print sourceList
+	return sourceList
+		
 
-loadSourceList('keywords.txt')
+keywordList = loadSourceList('keywords.txt')
+urlList = loadSourceList('url.txt')
+
+print keywordList
+print urlList
