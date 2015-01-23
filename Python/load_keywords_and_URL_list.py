@@ -11,9 +11,10 @@ def loadSourceList(filename):
 	sourceList = textString.split('\n')
 	return sourceList
 		
-
+'''
 keywordList = loadSourceList('keywords.txt')
 urlList = loadSourceList('url.txt')
 
 print keywordList
 print urlList
+'''
