@@ -1,0 +1,27 @@
+Included with the python script(s), there should be a text file in the following format:
+
+keywords.txt
+women
+technology
+awesome
+
+The name of the file should be provided as input to the function.
+If the file is not found, the error should be handled
+>>> from load_keywords_and_URL_list import loadSourceList
+>>> loadSourceList('notafile.txt') # doctest: +ELLIPSIS
+Traceback (most recent call last):
+  ...
+  ...
+IOError: [Errno 2] No such file or directory: ...
+
+if the file is empty, the error should be handled
+>>> loadSourceList('empty.txt')
+['']
+
+if the file is not in the proper format, the error should be handled
+>>> loadSourceList('wrongfile.csv')
+['women technology awesome']
+
+verify output
+>>> loadSourceList('keywords.txt')
+['women', 'technology', 'awesome']
