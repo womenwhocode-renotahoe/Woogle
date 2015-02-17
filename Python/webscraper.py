@@ -4,9 +4,12 @@ input:          the name of a configuration file containing a list of source URL
 output:         (to file) a list of article titles and their corresponding URLs
 '''
 
-from load_keywords_and_URL_list import loadSourceList
+from load_keywords_and_URL_list import load_source_list
 
-def file_check(filename):
+source_URLs_file = 'urls.txt'
+search_keywords_file = 'keywords.txt'
+
+def check_source_file_exists(filename):
 	try:
 		f = open(filename)
 		f.close()
@@ -14,19 +17,20 @@ def file_check(filename):
 	except IOError as e:
 		return False	
 
-def request_filename(filetype):
-	inputrequest = "Please input the filename that contains the %s list\n" % (filetype)
-	file = raw_input(inputrequest)
-	while file_check(file) == False:
-	 	print "This file does not exist.\n"
-	 	file = raw_input(inputrequest)
- 	return file
+def check_file_errors(filename):
+ 	if not check_source_file_exists(filename):
+		# TO-DO: raise error
+		return True
 
-urlFile = request_filename("url")
-keywordFile = request_filename("keyword")
+	if len(load_source_list(filename)) = 0:
+		# TO-DO: raise error
+		return True
+	else:
+		return False
 
-urlList = loadSourceList(urlFile)
-keywordList = loadSourceList(keywordFile)
+def webscraper():
+	if check_file_errors(source_URLs_file) or check_file_errors(search_keywords_file):
+		# TO-DO: raise error
+		return
 
-print urlList
-print keywordList
+	# continue ...

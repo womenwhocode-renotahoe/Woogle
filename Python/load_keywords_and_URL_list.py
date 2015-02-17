@@ -4,17 +4,12 @@ input:          filename
 output:         data structures containing URL list and search keywords list
 '''
 
+def load_source_list(filename):
+	if not filename.lower().endswith('.txt'):
+		# Needs to handle error without printing
+		print "Only .txt files are allowed."
+		return
 
-def loadSourceList(filename):
-	textFile = open(filename, 'r')
-	textString = textFile.read()
-	sourceList = textString.split('\n')
-	return sourceList
-		
-'''
-keywordList = loadSourceList('keywords.txt')
-urlList = loadSourceList('url.txt')
-
-print keywordList
-print urlList
-'''
+	text_file_string = open(filename, 'r').read()
+	source_list = text_file_string.splitlines()
+	return source_list
