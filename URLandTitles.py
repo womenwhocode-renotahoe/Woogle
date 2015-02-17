@@ -4,19 +4,22 @@
 # output:         (to file) new URLs list, article title list
 # '''
 
-URLList = ["1", "2", "3"]
-TitleList= ["a", "b", "c"]
+# test parameters below
+# URLList = ["1", "2", "3"]
+# TitleList= ["a", "b", "c"]
 
+# expected results
 # [(1, 'a'), 
 # (2, 'b'), 
 # (3, 'c')]
-output = []
-def URLandTitles(URLList, TitleList):
-	output = list(zip(URLList, TitleList))
-	# return output
-	CreateFile = open("URLandTitleData.csv", "w+b")
-	for line in output:
-		CreateFile.write(", ".join(line)+"\n")
-	CreateFile.close()
 
-URLandTitles(URLList, TitleList)
+# list(zip()) seems to be for Python 3, you can use zip() in Python 2
+
+def URLandTitles(URLList, TitleList):
+	output = zip(URLList, TitleList)
+	# return output
+	with open("URLandTitleData.csv", "w+b") as f:
+		for line in output:
+			f.write(",".join(line)+"\n")
+
+# URLandTitles(URLList, TitleList)
