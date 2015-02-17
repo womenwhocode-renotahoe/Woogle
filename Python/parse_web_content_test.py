@@ -9,3 +9,5 @@ class TestParseWebContent:
         assert_equals(parse_content(['red'], 'got blue'), False)
     def test_multiple_keywords(self):
         assert_equals(parse_content(['red','yellow'], 'got yellow'), True)
+    def test_missing_keyword(self):
+        assert_equals(parse_content([], 'got nuffin'), False)

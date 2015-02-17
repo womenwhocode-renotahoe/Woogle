@@ -5,7 +5,4 @@ output:         good or not good
 '''
 
 def parse_content(keywords, content):
-    if any(word in content for word in keywords):
-        return True
-    else:
-        return False
+    return any(word in content for word in keywords)
