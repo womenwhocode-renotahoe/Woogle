@@ -15,11 +15,13 @@
 
 # list(zip()) seems to be for Python 3, you can use zip() in Python 2
 
-def URLandTitles(URLList, TitleList):
+# new way using csv module
+import csv
+
+def URLandTitles(URLList=['http://google.com'], TitleList=["Google, The 'Search' Engine"]):
 	output = zip(URLList, TitleList)
 	# return output
 	with open("URLandTitleData.csv", "w+b") as f:
+		csv_row = csv.writer(f, delimiter = ' ', quotechar = '"', quoting = csv.QUOTE_MINIMAL)
 		for line in output:
-			f.write(",".join(line)+"\n")
-
-# URLandTitles(URLList, TitleList)
+			csv_row.writerow(line)
